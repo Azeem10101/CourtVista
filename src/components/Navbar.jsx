@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
+    const { user, logout, getDashboardPath } = useAuth();
 
     const links = [
         { to: '/', label: 'Home' },
@@ -16,6 +19,12 @@ export default function Navbar() {
     const isActive = (path) => {
         if (path === '/') return location.pathname === '/';
         return location.pathname.startsWith(path);
+    };
+
+    const handleLogout = () => {
+        logout();
+        setMobileOpen(false);
+        navigate('/');
     };
 
     return (
@@ -41,9 +50,31 @@ export default function Navbar() {
                 </div>
 
                 <div className="navbar__actions">
-                    <Link to="/search" className="btn btn--gold btn--sm">
-                        Get Started
-                    </Link>
+                    {user ? (
+                        <>
+                            <Link
+                                to={getDashboardPath()}
+                                className="navbar__user-btn"
+                            >
+                                <span className="navbar__user-avatar">
+                                    {user.name.charAt(0).toUpperCase()}
+                                </span>
+                                <span className="navbar__user-name">{user.name}</span>
+                            </Link>
+                            <button onClick={handleLogout} className="btn btn--outline btn--sm">
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" className="btn btn--outline btn--sm">
+                                Login
+                            </Link>
+                            <Link to="/register" className="btn btn--gold btn--sm">
+                                Register
+                            </Link>
+                        </>
+                    )}
                     <button
                         className={`navbar__hamburger ${mobileOpen ? 'navbar__hamburger--open' : ''}`}
                         onClick={() => setMobileOpen(!mobileOpen)}
@@ -67,14 +98,42 @@ export default function Navbar() {
                         {link.label}
                     </Link>
                 ))}
-                <Link
-                    to="/search"
-                    className="btn btn--gold btn--lg"
-                    style={{ marginTop: 'var(--space-4)' }}
-                    onClick={() => setMobileOpen(false)}
-                >
-                    Get Started
-                </Link>
+                {user ? (
+                    <>
+                        <Link
+                            to={getDashboardPath()}
+                            className="navbar__link"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            Dashboard
+                        </Link>
+                        <button
+                            onClick={handleLogout}
+                            className="btn btn--outline btn--lg"
+                            style={{ marginTop: 'var(--space-4)' }}
+                        >
+                            Logout
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <Link
+                            to="/login"
+                            className="navbar__link"
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to="/register"
+                            className="btn btn--gold btn--lg"
+                            style={{ marginTop: 'var(--space-4)' }}
+                            onClick={() => setMobileOpen(false)}
+                        >
+                            Register
+                        </Link>
+                    </>
+                )}
             </div>
         </nav>
     );

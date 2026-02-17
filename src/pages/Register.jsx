@@ -1,0 +1,151 @@
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import './Auth.css';
+
+export default function Register() {
+    const { register, getDashboardPath } = useAuth();
+    const navigate = useNavigate();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [role, setRole] = useState('user');
+    const [error, setError] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setError('');
+
+        if (!name || !email || !password || !confirmPassword) {
+            setError('Please fill in all fields.');
+            return;
+        }
+
+        if (password.length < 4) {
+            setError('Password must be at least 4 characters.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        const result = register({ name, email, password, role });
+        if (result.success) {
+            navigate(getDashboardPath());
+        } else {
+            setError(result.message);
+        }
+    };
+
+    return (
+        <div className="auth-page">
+            <div className="auth-card animate-fade-in-up">
+                <div className="auth-card__header">
+                    <div className="auth-card__logo">CV</div>
+                    <h1 className="auth-card__title">Create Account</h1>
+                    <p className="auth-card__subtitle">Join CourtVista to find the right legal help</p>
+                </div>
+
+                <form className="auth-form" onSubmit={handleSubmit}>
+                    {error && <div className="auth-error">{error}</div>}
+
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="reg-name">Full Name</label>
+                        <input
+                            className="form-input"
+                            type="text"
+                            id="reg-name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Enter your full name"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="reg-email">Email Address</label>
+                        <input
+                            className="form-input"
+                            type="email"
+                            id="reg-email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="you@example.com"
+                            autoComplete="email"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="reg-password">Password</label>
+                        <input
+                            className="form-input"
+                            type="password"
+                            id="reg-password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Create a password"
+                            autoComplete="new-password"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="reg-confirm">Confirm Password</label>
+                        <input
+                            className="form-input"
+                            type="password"
+                            id="reg-confirm"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder="Confirm your password"
+                            autoComplete="new-password"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">I am a</label>
+                        <div className="auth-role-selector">
+                            <div className="auth-role-option">
+                                <input
+                                    type="radio"
+                                    id="role-user"
+                                    name="role"
+                                    value="user"
+                                    checked={role === 'user'}
+                                    onChange={(e) => setRole(e.target.value)}
+                                />
+                                <label htmlFor="role-user">
+                                    <span className="auth-role-option__icon">👤</span>
+                                    User
+                                </label>
+                            </div>
+                            <div className="auth-role-option">
+                                <input
+                                    type="radio"
+                                    id="role-lawyer"
+                                    name="role"
+                                    value="lawyer"
+                                    checked={role === 'lawyer'}
+                                    onChange={(e) => setRole(e.target.value)}
+                                />
+                                <label htmlFor="role-lawyer">
+                                    <span className="auth-role-option__icon">⚖️</span>
+                                    Lawyer
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" className="btn btn--gold btn--lg" style={{ width: '100%' }}>
+                        Create Account
+                    </button>
+                </form>
+
+                <div className="auth-card__footer">
+                    Already have an account? <Link to="/login">Sign in</Link>
+                </div>
+            </div>
+        </div>
+    );
+}
