@@ -1,0 +1,324 @@
+.profile-page {
+    padding: var(--space-8) 0;
+}
+
+/* ─── PROFILE HEADER ─── */
+.profile-header {
+    display: flex;
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+    padding: var(--space-8);
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-card);
+}
+
+.profile-header__avatar {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--navy-800), var(--navy-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-400);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.profile-header__info {
+    flex: 1;
+}
+
+.profile-header__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--navy-800);
+    margin-bottom: var(--space-2);
+}
+
+.profile-header__specializations {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+    margin-bottom: var(--space-4);
+}
+
+.profile-header__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+    font-size: var(--text-sm);
+    color: var(--gray-600);
+}
+
+.profile-header__meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.profile-header__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+}
+
+.profile-header__actions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+.profile-header__rating {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+/* ─── PROFILE BODY ─── */
+.profile-body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-6);
+    align-items: start;
+}
+
+.profile-section {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.profile-section__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--navy-800);
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.profile-bio {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--gray-600);
+}
+
+/* Case Statistics */
+.profile-case-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+}
+
+.profile-case-stat {
+    text-align: center;
+    padding: var(--space-5) var(--space-4);
+    background: var(--navy-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-100);
+}
+
+.profile-case-stat__icon {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+}
+
+.profile-case-stat__number {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--navy-800);
+    line-height: 1;
+    margin-bottom: var(--space-1);
+}
+
+.profile-case-stat__label {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Credentials */
+.profile-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.profile-credential {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+}
+
+.profile-credential__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--navy-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-base);
+    flex-shrink: 0;
+}
+
+.profile-credential__label {
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+}
+
+.profile-credential__value {
+    font-size: var(--text-sm);
+    color: var(--navy-800);
+    font-weight: 500;
+}
+
+/* Awards */
+.profile-awards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.profile-award {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--gold-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gold-200);
+    font-size: var(--text-sm);
+    color: var(--gold-600);
+    font-weight: 500;
+}
+
+/* Practice area tags */
+.profile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+/* Reviews summary */
+.reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-5);
+    background: var(--navy-50);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-5);
+}
+
+.reviews-summary__score {
+    text-align: center;
+}
+
+.reviews-summary__number {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--navy-800);
+    line-height: 1;
+}
+
+.reviews-summary__count {
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+    margin-top: var(--space-1);
+}
+
+.reviews-summary__bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.reviews-summary__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--gray-500);
+}
+
+.reviews-summary__bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--gray-200);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.reviews-summary__bar-fill {
+    height: 100%;
+    background: var(--gold-500);
+    border-radius: 3px;
+}
+
+/* Sidebar */
+.profile-sidebar__fees {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.profile-sidebar__fee-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-sm);
+}
+
+.profile-sidebar__fee-label {
+    color: var(--gray-500);
+}
+
+.profile-sidebar__fee-value {
+    font-weight: 600;
+    color: var(--navy-800);
+}
+
+@media (max-width: 1024px) {
+    .profile-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        gap: var(--space-5);
+        padding: var(--space-5);
+    }
+
+    .profile-header__avatar {
+        width: 80px;
+        height: 80px;
+        font-size: var(--text-2xl);
+    }
+
+    .profile-header__name {
+        font-size: var(--text-2xl);
+    }
+
+    .profile-header__actions {
+        flex-wrap: wrap;
+    }
+}

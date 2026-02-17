@@ -1,0 +1,44 @@
+.compare-page {
+    padding: var(--space-8) 0;
+}
+
+.compare-page__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--navy-800);
+    margin-bottom: var(--space-2);
+}
+
+.compare-page__subtitle {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+    margin-bottom: var(--space-8);
+}
+
+.compare-page__empty {
+    text-align: center;
+    padding: var(--space-16) var(--space-6);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--gray-200);
+}
+
+.compare-page__empty-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+}
+
+.compare-page__empty h3 {
+    font-size: var(--text-xl);
+    color: var(--navy-800);
+    margin-bottom: var(--space-3);
+}
+
+.compare-page__empty p {
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+    margin-bottom: var(--space-6);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
