@@ -15,6 +15,9 @@ import Register from './pages/Register';
 import UserDashboard from './pages/UserDashboard';
 import LawyerDashboard from './pages/LawyerDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import EditProfile from './pages/EditProfile';
+import ChatList from './pages/ChatList';
+import ChatWindow from './pages/ChatWindow';
 import './App.css';
 
 export default function App() {
@@ -92,6 +95,34 @@ export default function App() {
                 element={
                   <ProtectedRoute allowedRoles={['admin']}>
                     <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Profile Edit */}
+              <Route
+                path="/profile/edit"
+                element={
+                  <ProtectedRoute allowedRoles={['user', 'lawyer', 'admin']}>
+                    <EditProfile />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Messaging */}
+              <Route
+                path="/messages"
+                element={
+                  <ProtectedRoute allowedRoles={['user', 'lawyer']}>
+                    <ChatList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/messages/:conversationId"
+                element={
+                  <ProtectedRoute allowedRoles={['user', 'lawyer']}>
+                    <ChatWindow />
                   </ProtectedRoute>
                 }
               />

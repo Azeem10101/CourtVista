@@ -1,15 +1,32 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { lawyers, practiceAreas, getInitials } from '../data/lawyers';
 import './BookConsultation.css';
 
+// Helpers for consultation persistence
+function getStoredConsultations() {
+    try {
+        return JSON.parse(localStorage.getItem('courtvista_consultations')) || [];
+    } catch {
+        return [];
+    }
+}
+
+function saveConsultation(consultation) {
+    const all = getStoredConsultations();
+    all.push(consultation);
+    localStorage.setItem('courtvista_consultations', JSON.stringify(all));
+}
+
 export default function BookConsultation() {
     const { id } = useParams();
+    const { user } = useAuth();
     const lawyer = lawyers.find((l) => l.id === parseInt(id));
     const [submitted, setSubmitted] = useState(false);
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
+        name: user?.name || '',
+        email: user?.email || '',
         phone: '',
         caseType: '',
         date: '',
@@ -41,6 +58,26 @@ export default function BookConsultation() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Persist the booking to localStorage
+        const consultation = {
+            id: 'consult-' + Date.now(),
+            lawyerId: lawyer.id,
+            lawyerName: lawyer.name,
+            clientName: formData.name,
+            clientEmail: formData.email.toLowerCase(),
+            clientUserId: user?.id || null,
+            phone: formData.phone,
+            caseType: formData.caseType,
+            caseTypeName: practiceAreas.find((pa) => pa.id === formData.caseType)?.name || formData.caseType,
+            date: formData.date,
+            time: formData.time,
+            message: formData.message,
+            status: 'pending',
+            createdAt: new Date().toISOString(),
+        };
+
+        saveConsultation(consultation);
         setSubmitted(true);
     };
 

@@ -181,6 +181,27 @@
     color: var(--navy-800);
 }
 
+.navbar__user-role {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 1px 6px;
+    border-radius: var(--radius-full);
+    background: var(--navy-100);
+    color: var(--navy-600);
+}
+
+.navbar__user-avatar[data-role="lawyer"] {
+    background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
+    color: var(--white);
+}
+
+.navbar__user-avatar[data-role="admin"] {
+    background: linear-gradient(135deg, #db2777, #be185d);
+    color: var(--white);
+}
+
 @media (max-width: 768px) {
 
     .navbar__links,

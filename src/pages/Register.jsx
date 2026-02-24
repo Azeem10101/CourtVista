@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 
 export default function Register() {
-    const { register, getDashboardPath } = useAuth();
+    const { register } = useAuth();
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -34,7 +34,10 @@ export default function Register() {
 
         const result = register({ name, email, password, role });
         if (result.success) {
-            navigate(getDashboardPath());
+            const userRole = result.user.role;
+            if (userRole === 'admin') navigate('/dashboard/admin');
+            else if (userRole === 'lawyer') navigate('/dashboard/lawyer');
+            else navigate('/dashboard/user');
         } else {
             setError(result.message);
         }

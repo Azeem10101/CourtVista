@@ -65,7 +65,7 @@ export function AuthProvider({ children }) {
 
         // Auto-login
         setUser(newUser);
-        return { success: true };
+        return { success: true, user: newUser };
     }
 
     // Login with email + password
@@ -82,7 +82,7 @@ export function AuthProvider({ children }) {
                 role: ADMIN_ACCOUNT.role,
             };
             setUser(adminUser);
-            return { success: true };
+            return { success: true, user: adminUser };
         }
 
         // Check registered users
@@ -96,14 +96,31 @@ export function AuthProvider({ children }) {
         }
 
         // Don't store password in session
-        const { password: _, ...safeUser } = found;
+        const { password: _unused, ...safeUser } = found;
         setUser(safeUser);
-        return { success: true };
+        return { success: true, user: safeUser };
     }
 
     // Logout
     function logout() {
         setUser(null);
+    }
+
+    // Update user profile
+    function updateProfile(updates) {
+        if (!user) return { success: false, message: 'Not logged in.' };
+
+        const updatedUser = { ...user, ...updates };
+        setUser(updatedUser);
+
+        // Also update in the users list
+        const users = getStoredUsers();
+        const updatedUsers = users.map((u) =>
+            u.id === user.id ? { ...u, ...updates } : u
+        );
+        localStorage.setItem('courtvista_users', JSON.stringify(updatedUsers));
+
+        return { success: true, user: updatedUser };
     }
 
     // Get dashboard path based on role
@@ -117,13 +134,14 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, register, logout, getDashboardPath }}>
+        <AuthContext.Provider value={{ user, login, register, logout, updateProfile, getDashboardPath }}>
             {children}
         </AuthContext.Provider>
     );
 }
 
 // Custom hook for easy access
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
     const context = useContext(AuthContext);
     if (!context) {

@@ -26,3 +26,5 @@ Thumbs.db
 
 # Temporary
 deleteLater
+lint_output.txt
+lint_results.txt

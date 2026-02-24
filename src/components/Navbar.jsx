@@ -9,12 +9,45 @@ export default function Navbar() {
     const navigate = useNavigate();
     const { user, logout, getDashboardPath } = useAuth();
 
-    const links = [
-        { to: '/', label: 'Home' },
-        { to: '/search', label: 'Find a Lawyer' },
-        { to: '/compare', label: 'Compare' },
-        { to: '/qna', label: 'Legal Q&A' },
-    ];
+    // Role-aware navigation links
+    const getLinks = () => {
+        if (!user) {
+            return [
+                { to: '/', label: 'Home' },
+                { to: '/search', label: 'Find a Lawyer' },
+                { to: '/compare', label: 'Compare' },
+                { to: '/qna', label: 'Legal Q&A' },
+            ];
+        }
+
+        switch (user.role) {
+            case 'lawyer':
+                return [
+                    { to: '/', label: 'Home' },
+                    { to: '/dashboard/lawyer', label: 'Clients & Practice' },
+                    { to: '/messages', label: 'Messages' },
+                    { to: '/qna', label: 'Legal Q&A' },
+                ];
+            case 'admin':
+                return [
+                    { to: '/', label: 'Home' },
+                    { to: '/dashboard/admin', label: 'Admin Panel' },
+                    { to: '/search', label: 'Manage Lawyers' },
+                    { to: '/qna', label: 'Legal Q&A' },
+                ];
+            default: // user
+                return [
+                    { to: '/', label: 'Home' },
+                    { to: '/search', label: 'Find a Lawyer' },
+                    { to: '/compare', label: 'Compare' },
+                    { to: '/dashboard/user', label: 'My Consultations' },
+                    { to: '/messages', label: 'Messages' },
+                    { to: '/qna', label: 'Legal Q&A' },
+                ];
+        }
+    };
+
+    const links = getLinks();
 
     const isActive = (path) => {
         if (path === '/') return location.pathname === '/';
@@ -56,10 +89,11 @@ export default function Navbar() {
                                 to={getDashboardPath()}
                                 className="navbar__user-btn"
                             >
-                                <span className="navbar__user-avatar">
+                                <span className="navbar__user-avatar" data-role={user.role}>
                                     {user.name.charAt(0).toUpperCase()}
                                 </span>
                                 <span className="navbar__user-name">{user.name}</span>
+                                <span className="navbar__user-role">{user.role}</span>
                             </Link>
                             <button onClick={handleLogout} className="btn btn--outline btn--sm">
                                 Logout

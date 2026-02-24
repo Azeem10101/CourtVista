@@ -1,5 +1,3 @@
-.home {}
-
 /* ─── HERO ─── */
 .hero {
     position: relative;
@@ -301,7 +299,6 @@
     justify-content: center;
     gap: var(--space-4);
 }
-
 
 @media (max-width: 768px) {
     .hero {

@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 
 export default function Login() {
-    const { login, getDashboardPath } = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +21,10 @@ export default function Login() {
 
         const result = login(email, password);
         if (result.success) {
-            navigate(getDashboardPath());
+            const role = result.user.role;
+            if (role === 'admin') navigate('/dashboard/admin');
+            else if (role === 'lawyer') navigate('/dashboard/lawyer');
+            else navigate('/dashboard/user');
         } else {
             setError(result.message);
         }
