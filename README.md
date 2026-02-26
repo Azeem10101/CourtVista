@@ -52,31 +52,31 @@ src/
 ## 📸 Screenshots
 
 ### 🏠 Landing Page
-![Landing Page](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/landing.png)
+![Landing Page](assets/screenshots/landing.png)
 Professional hero section with search, practice area browsing, and featured lawyers.
 
 ### 📝 User Registration
-![Register Page](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/register.png)
+![Register Page](assets/screenshots/register.png)
 Secure account creation for Users and Lawyers with role-based onboarding.
 
 ### 👤 User Dashboard
-![User Dashboard](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/user_dashboard.png)
+![User Dashboard](assets/screenshots/user_dashboard.png)
 Personalized dashboard for users to manage consultations and legal inquiries.
 
 ### ⚖️ Lawyer Dashboard
-![Lawyer Dashboard](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/lawyer_dashboard.png)
+![Lawyer Dashboard](assets/screenshots/lawyer_dashboard.png)
 Comprehensive management panel for lawyers to track cases and clients.
 
 ### 🛠️ Admin Panel
-![Admin Dashboard](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/admin_dashboard.png)
+![Admin Dashboard](assets/screenshots/admin_dashboard.png)
 Administrative overview with system metrics and user management.
 
 ### 💬 Messages & Consultation
-![Chat Window](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/chat_window.png)
+![Chat Window](assets/screenshots/chat_window.png)
 Real-time communication interface for legal consultations.
 
 ### ❓ Legal Q&A Forum
-![Q&A Page](https://raw.githubusercontent.com/Azeem10101/CourtVista/main/assets/screenshots/qna_page.png)
+![Q&A Page](assets/screenshots/qna_page.png)
 Community-driven forum for legal questions answered by verified experts.
 
 ## 👤 Author
