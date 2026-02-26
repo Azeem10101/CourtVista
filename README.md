@@ -51,14 +51,33 @@ src/
 
 ## 📸 Screenshots
 
-### Home Page
+### 🏠 Landing Page
+![Landing Page](assets/screenshots/landing.png)
 Professional hero section with search, practice area browsing, and featured lawyers.
 
-### Search & Discovery
-Filter lawyers by 7 dimensions with sorting and pagination.
+### 📝 User Registration
+![Register Page](assets/screenshots/register.png)
+Secure account creation for Users and Lawyers with role-based onboarding.
 
-### Lawyer Profiles
-Comprehensive profiles with case statistics, credentials, reviews, and booking.
+### 👤 User Dashboard
+![User Dashboard](assets/screenshots/user_dashboard.png)
+Personalized dashboard for users to manage consultations and legal inquiries.
+
+### ⚖️ Lawyer Dashboard
+![Lawyer Dashboard](assets/screenshots/lawyer_dashboard.png)
+Comprehensive management panel for lawyers to track cases and clients.
+
+### 🛠️ Admin Panel
+![Admin Dashboard](assets/screenshots/admin_dashboard.png)
+Administrative overview with system metrics and user management.
+
+### 💬 Messages & Consultation
+![Chat Window](assets/screenshots/chat_window.png)
+Real-time communication interface for legal consultations.
+
+### ❓ Legal Q&A Forum
+![Q&A Page](assets/screenshots/qna_page.png)
+Community-driven forum for legal questions answered by verified experts.
 
 ## 👤 Author
 
