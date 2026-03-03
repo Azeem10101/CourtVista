@@ -1,0 +1,172 @@
+.book-page {
+    padding: var(--space-8) 0;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.book-page__header {
+    margin-bottom: var(--space-8);
+}
+
+.book-page__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    color: var(--navy-800);
+    margin-bottom: var(--space-2);
+}
+
+.book-page__subtitle {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+}
+
+/* Lawyer summary at the top */
+.book-page__lawyer-summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    background: var(--navy-50);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-8);
+    border: 1px solid var(--navy-100);
+}
+
+.book-page__lawyer-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--navy-800), var(--navy-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-400);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    flex-shrink: 0;
+}
+
+.book-page__lawyer-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--navy-800);
+}
+
+.book-page__lawyer-spec {
+    font-size: var(--text-sm);
+    color: var(--gray-500);
+}
+
+.book-page__lawyer-fee {
+    margin-left: auto;
+    text-align: right;
+}
+
+.book-page__lawyer-fee-label {
+    font-size: var(--text-xs);
+    color: var(--gray-400);
+}
+
+.book-page__lawyer-fee-value {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--navy-800);
+}
+
+/* Form */
+.book-form {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    padding: var(--space-8);
+}
+
+.book-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+}
+
+.book-form__full {
+    grid-column: 1 / -1;
+}
+
+.book-form__submit {
+    margin-top: var(--space-4);
+}
+
+/* Confirmation */
+.book-confirmation {
+    text-align: center;
+    padding: var(--space-16) var(--space-6);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+}
+
+.book-confirmation__icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-5);
+}
+
+.book-confirmation__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    color: var(--navy-800);
+    margin-bottom: var(--space-3);
+}
+
+.book-confirmation__text {
+    font-size: var(--text-base);
+    color: var(--gray-500);
+    margin-bottom: var(--space-8);
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-confirmation__details {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: left;
+    padding: var(--space-5);
+    background: var(--navy-50);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+}
+
+.book-confirmation__detail {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.book-confirmation__detail-label {
+    color: var(--gray-500);
+    min-width: 100px;
+}
+
+.book-confirmation__detail-value {
+    color: var(--navy-800);
+    font-weight: 500;
+}
+
+@media (max-width: 640px) {
+    .book-form__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-page__lawyer-summary {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .book-page__lawyer-fee {
+        margin-left: 0;
+        text-align: center;
+    }
+}
